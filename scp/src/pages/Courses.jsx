@@ -1,161 +1,114 @@
 import React from "react";
-import {
-  GraduationCap,
-  BookOpen,
-  Award,
-  Users,
-  ArrowRight,
-} from "lucide-react";
+import { Award, CheckCircle, Clock, BriefcaseMedical } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 
-const courses = [
-  {
-    id: "bpharma",
-    title: "Bachelor of Pharmacy (B.Pharm)",
-    duration: "4 Years",
-    description:
-      "An undergraduate program focusing on pharmaceutical sciences, preparing students for careers in drug development, clinical pharmacy, and pharmaceutical industry.",
-    icon: <GraduationCap className="w-8 h-8 text-blue-600" />,
-    highlights: [
-      "AICTE Approved",
-      "Industry-Relevant Curriculum",
-      "Laboratory and Research Facilities",
-    ],
-  },
-  {
-    id: "mpharma",
-    title: "Master of Pharmacy (M.Pharm)",
-    duration: "2 Years",
-    description:
-      "Advanced postgraduate program offering specializations in areas like Pharmacology, Pharmaceutics, and Pharmaceutical Chemistry, with emphasis on research and development.",
-    icon: <BookOpen className="w-8 h-8 text-green-600" />,
-    highlights: [
-      "Research-Oriented",
-      "Experienced Faculty",
-      "Collaborative Projects & Internships",
-    ],
-  },
-  {
-    id: "dpharma",
-    title: "Diploma in Pharmacy (D.Pharm)",
-    duration: "2 Years",
-    description:
-      "A diploma program that prepares students for foundational knowledge in pharmacy practice, suitable for roles in community and hospital pharmacies.",
-    icon: <Award className="w-8 h-8 text-purple-600" />,
-    highlights: [
-      "Quick Path to Pharmacy Practice",
-      "Practical Training",
-      "Recognized by Pharmacy Council",
-    ],
-  },
-];
+const dpharmProgram = {
+  id: "dpharma",
+  title: "Diploma in Pharmacy (D.Pharm)",
+  duration: "2 Years",
+  description:
+    "A comprehensive diploma program providing foundational knowledge and practical skills for pharmacy practice, preparing students for rewarding careers in community pharmacies, hospitals, and pharmaceutical industries.",
+  icon: <BriefcaseMedical className="w-8 h-8 text-indigo-600" />,
+  highlights: [
+    "PCI-approved curriculum",
+    "Hands-on laboratory training",
+    "Industry-aligned coursework",
+    "Hospital & retail pharmacy internships",
+    "Eligibility for Pharmacy Council registration"
+  ],
+  stats: [
+    { value: "100%", label: "Practical Exposure", icon: <CheckCircle /> },
+    { value: "2 Years", label: "Program Duration", icon: <Clock /> },
+    { value: "500+", label: "Successful Graduates", icon: <Award /> }
+  ]
+};
 
 export default function CoursesPage() {
   return (
     <Layout>
-      <section className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 py-16 px-6 md:px-12">
+      <section className="relative min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-16 px-6 md:px-12">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23000000' fillOpacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%233334ff' fillOpacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
             }}
           />
         </div>
 
-        {/* Page Title */}
-        <div className="max-w-5xl mx-auto text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
-            Our Pharmacy Programs
-          </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Explore the courses designed to shape your career in pharmaceutical
-            sciences and healthcare.
+        {/* Page Header */}
+        <div className="max-w-5xl mx-auto text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">
+            Diploma in Pharmacy Program
+          </h1>
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            Launch your pharmacy career with our PCI-approved 2-year diploma program combining theoretical knowledge with hands-on training.
           </p>
         </div>
 
-        {/* Courses Grid */}
-        <div className="max-w-7xl mx-auto grid gap-12 md:grid-cols-3">
-          {courses.map(
-            ({ id, title, duration, description, icon, highlights }) => (
-              <article
-                key={id}
-                className="relative bg-white rounded-3xl shadow-lg p-8 flex flex-col hover:shadow-2xl transition-shadow duration-300"
-              >
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="p-3 bg-gradient-to-br from-blue-100 to-blue-300 rounded-full">
-                    {icon}
+        {/* Program Card */}
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+            <div className="md:flex">
+              {/* Program Image */}
+              <div className="md:w-2/5 bg-gradient-to-br from-indigo-100 to-blue-100 flex items-center justify-center p-8">
+                <div className="text-center">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-lg mb-6">
+                    {dpharmProgram.icon}
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold text-gray-900">
-                      {title}
-                    </h3>
-                    <p className="text-sm text-gray-500 mt-1">{duration}</p>
-                  </div>
+                  <h2 className="text-3xl font-bold text-gray-900">{dpharmProgram.title}</h2>
+                  <p className="text-blue-600 font-medium mt-2">{dpharmProgram.duration} Program</p>
                 </div>
+              </div>
 
-                <p className="text-gray-700 flex-grow leading-relaxed">
-                  {description}
+              {/* Program Details */}
+              <div className="md:w-3/5 p-8 md:p-12">
+                <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                  {dpharmProgram.description}
                 </p>
 
-                <ul className="mt-6 mb-8 space-y-2">
-                  {highlights.map((point, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-center text-sm text-gray-600 space-x-2"
-                    >
-                      <Award className="w-4 h-4 text-yellow-500" />
-                      <span>{point}</span>
-                    </li>
+                <div className="mb-10">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                    <Award className="w-5 h-5 text-indigo-600 mr-2" />
+                    Program Highlights
+                  </h3>
+                  <ul className="space-y-3">
+                    {dpharmProgram.highlights.map((point, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" />
+                        <span className="text-gray-700">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-3 gap-4 bg-gray-50 rounded-xl p-4">
+                  {dpharmProgram.stats.map((stat, idx) => (
+                    <div key={idx} className="text-center p-3">
+                      <div className="text-2xl font-bold text-indigo-600 mb-1">{stat.value}</div>
+                      <div className="text-sm text-gray-600 flex items-center justify-center">
+                        {stat.icon && React.cloneElement(stat.icon, { className: "w-4 h-4 mr-1 text-blue-500" })}
+                        {stat.label}
+                      </div>
+                    </div>
                   ))}
-                </ul>
-
-                <Link
-                  to={`/courses/${id}`}
-                  className="inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors"
-                  aria-label={`Learn more about ${title}`}
-                ></Link>
-              </article>
-            )
-          )}
-        </div>
-
-        {/* Stats & Call to Action */}
-        <div className="max-w-5xl mx-auto mt-20 text-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-12 shadow-xl">
-          <div className="grid grid-cols-3 gap-12 mb-12 text-white">
-            <div className="space-y-2">
-              <div className="text-5xl font-extrabold text-blue-500 drop-shadow-lg">
-                500+
-              </div>
-              <div className="text-lg font-medium text-blue-300 tracking-wide">
-                Students Enrolled
-              </div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-5xl font-extrabold text-green-500 drop-shadow-lg">
-                50+
-              </div>
-              <div className="text-lg font-medium text-green-300 tracking-wide">
-                Expert Faculty
-              </div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-5xl font-extrabold text-purple-500 drop-shadow-lg">
-                25+
-              </div>
-              <div className="text-lg font-medium text-purple-300 tracking-wide">
-                Years of Excellence
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
+        {/* CTA Section */}
+        <div className="max-w-3xl mx-auto mt-20 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6">Ready to Start Your Pharmacy Journey?</h3>
           <Link
-            to="https://siu.in8.nopaperforms.com/"
-            className="inline-block bg-gradient-to-r from-blue-600 to-purple-700 hover:from-purple-700 hover:to-blue-600 text-white font-semibold text-lg px-14 py-4 rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(139,92,246,0.7)] transition-all duration-300"
+            to="https://seglko.in8.nopaperforms.com/"
+            className="inline-block bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold text-lg px-10 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            Apply Now
+            Apply for D.Pharm Program
           </Link>
         </div>
       </section>

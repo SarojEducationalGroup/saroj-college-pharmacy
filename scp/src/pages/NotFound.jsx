@@ -48,7 +48,7 @@ function App() {
                     <Link to="/" className="action-button">Return to Home Page</Link> 
                     <Link to="/contact" className="action-button">Contact Us</Link>
                     <Link to="/about" className="action-button">About Us</Link>
-                    <Link to="https://siu.in8.nopaperforms.com/" className="action-button">Admission</Link>
+                    <Link to="https://seglko.in8.nopaperforms.com/" className="action-button">Admission</Link>
                 </div>
             </div>
 

@@ -101,7 +101,7 @@ export default function AdmissionProcess() {
             <p className="text-blue-100 mb-6">Begin your journey towards a successful career in pharmacy</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="https://siu.in8.nopaperforms.com/"
+                to="https://seglko.in8.nopaperforms.com/"
                 className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
                 Start Online Registration

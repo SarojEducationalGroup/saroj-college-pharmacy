@@ -241,7 +241,7 @@ const Header = () => {
                 className="ml-4"
               >
                 <Link
-                  to="https://siu.in8.nopaperforms.com/"
+                  to="https://seglko.in8.nopaperforms.com/"
                   className="bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-800 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all shadow-md hover:shadow-lg flex items-center"
                 >
                   <span>Apply Now</span>

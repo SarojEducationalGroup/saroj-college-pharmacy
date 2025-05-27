@@ -71,11 +71,7 @@ export default function ContactUs() {
                   <div>
                     <h3 className="font-semibold text-indigo-800">Address</h3>
                     <address className="not-italic text-indigo-700 leading-relaxed mt-1 text-sm">
-                      Saroj College of Pharmacy <br />
-                      Saroj Educational Campus <br />
-                      Saroj Institute Road, Sarojpuri, <br />
-                      Near Rameshwar Mandir, <br />
-                      Prayagraj, Uttar Pradesh - 211004
+                      Ahimamau, Arjunganj, Sultanpur Road, Lucknow, Uttar Pradesh, India, 226001
                     </address>
                   </div>
                 </div>
@@ -84,7 +80,7 @@ export default function ContactUs() {
                   <Phone className="text-indigo-600 w-6 h-6" />
                   <div className="text-indigo-700">
                     <h3 className="font-semibold text-indigo-800">Phone</h3>
-                    <p className="text-sm">+91 80044 45881, +91 80044 45882</p>
+                    <p className="text-sm">+91 05222239810</p>
                   </div>
                 </div>
 

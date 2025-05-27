@@ -43,7 +43,7 @@ const Footer = () => {
           <ul className="space-y-3 text-sm">
             <li className="flex items-start">
               <FaMapMarkerAlt className="mt-1 mr-3 text-blue-500" />
-              <span>123 College Road, Education City, India</span>
+              <span>Ahimamau, Arjunganj, Sultanpur Road, Lucknow, Uttar Pradesh, India, 226001</span>
             </li>
             <li className="flex items-center">
               <FaPhone className="mr-3 text-blue-500" />
@@ -60,7 +60,7 @@ const Footer = () => {
       {/* Social & Copyright */}
       <div className="border-t border-gray-700 py-6">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm">
-          <p className="mb-4 md:mb-0 text-gray-400">&copy; {new Date().getFullYear()} Your College Name. All rights reserved.</p>
+          <p className="mb-4 md:mb-0 text-gray-400">&copy; {new Date().getFullYear()} Saroj College of Pharmacy. All rights reserved.</p>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-white"><FaFacebookF /></a>
             <a href="#" className="hover:text-white"><FaTwitter /></a>

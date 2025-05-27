@@ -181,7 +181,7 @@ export default function VisionMissionValues() {
               </Link>
 
               
-              <Link to="https://siu.in8.nopaperforms.com/" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              <Link to="https://seglko.in8.nopaperforms.com/" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
                 Contact Admissions
               </Link>
             </div>

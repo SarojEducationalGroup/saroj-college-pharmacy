@@ -12,7 +12,7 @@ export const CTASection = () => (
         Join Saroj College of Pharmacy and be a part of the future of healthcare.
       </p>
       <Link
-      to="https://siu.in8.nopaperforms.com/"
+      to="https://seglko.in8.nopaperforms.com/"
         size="lg"
         className="bg-gradient-to-r from-gray-900 hover:cursor-pointer to-gray-800 outline-1 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full transition-colors"
       >
