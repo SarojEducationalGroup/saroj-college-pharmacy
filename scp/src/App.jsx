@@ -9,6 +9,7 @@ import ChairmanMessage from './pages/ChairmanMessage';
 import VisionMissionValues from './pages/VisionMissionValues';
 import AdmissionProcess from './pages/AdmissionProcedure';
 import ContactUs from './pages/Contact';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   return (
@@ -22,6 +23,8 @@ const App = () => {
 <Route path='/vision-mission' element={ <VisionMissionValues /> } /> 
 <Route path='/admission-process' element={ <AdmissionProcess/> } /> 
 <Route path='/contact' element={ <ContactUs/> } /> 
+<Route path='*' element={ <NotFound/>  } /> 
+
 
     
 
