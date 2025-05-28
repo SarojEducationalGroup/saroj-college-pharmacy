@@ -81,7 +81,7 @@ const itemVariants = {
 const Header = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const [mobileExpandedItem, setMobileExpandedItem] = useState(null);
 
   return (
     <>
@@ -91,7 +91,7 @@ const Header = () => {
       >
         <div className="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
           <div className="flex items-center space-x-6">
-            <motion.div 
+            <motion.div  
               whileHover={{ scale: 1.05 }}
               className="flex items-center"
             >
@@ -259,174 +259,10 @@ const Header = () => {
               </motion.div>
             </nav>
 
-            {/* Animated Mobile menu button */}
-            <motion.button
-              className="lg:hidden text-gray-700 focus:outline-none relative z-50"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="w-8 h-8 flex flex-col justify-center items-center">
-                <motion.span 
-                  className="block w-6 h-0.5 bg-gray-800 mb-1.5"
-                  animate={mobileMenuOpen ? 
-                    { rotate: 45, y: 6, backgroundColor: "#1d4ed8" } : 
-                    { rotate: 0, y: 0, backgroundColor: "#1f2937" }
-                  }
-                />
-                <motion.span 
-                  className="block w-6 h-0.5 bg-gray-800 mb-1.5"
-                  animate={mobileMenuOpen ? 
-                    { opacity: 0 } : 
-                    { opacity: 1 }
-                  }
-                />
-                <motion.span 
-                  className="block w-6 h-0.5 bg-gray-800"
-                  animate={mobileMenuOpen ? 
-                    { rotate: -45, y: -6, backgroundColor: "#1d4ed8" } : 
-                    { rotate: 0, y: 0, backgroundColor: "#1f2937" }
-                  }
-                />
-              </div>
-            </motion.button>
-          </div>
 
-          {/* Premium Mobile Navigation */}
-          <AnimatePresence>
-            {mobileMenuOpen && (
-              <>
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-                />
-                <motion.div 
-                  initial={{ x: '100%' }}
-                  animate={{ x: 0 }}
-                  exit={{ x: '100%' }}
-                  transition={{ type: "spring", damping: 25 }}
-                  className="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 overflow-y-auto"
-                >
-                  <div className="p-6">
-                    <div className="flex justify-between items-center mb-8">
-                      <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                        <img src={logo} alt="College Logo" className="h-12" />
-                      </Link>
-                      <button 
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="text-gray-500 hover:text-gray-700 text-2xl"
-                      >
-                        &times;
-                      </button>
-                    </div>
-                    
-                    <div className="flex flex-col space-y-1">
-                      {menuItems.map((item, index) => (
-                        <div key={index} className="border-b border-gray-100 last:border-0">
-                          {item.links ? (
-                            <>
-                              <motion.button
-                                className="flex items-center justify-between w-full text-gray-800 hover:text-blue-700 font-medium py-4 px-2 transition-colors"
-                                onClick={() => setHoveredItem(hoveredItem === index ? null : index)}
-                                whileTap={{ scale: 0.98 }}
-                              >
-                                <span>{item.title}</span>
-                                <motion.span
-                                  animate={{ rotate: hoveredItem === index ? 180 : 0 }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <FaChevronDown />
-                                </motion.span>
-                              </motion.button>
-                              <AnimatePresence>
-                                {hoveredItem === index && (
-                                  <motion.ul
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: "auto", opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="pl-4 overflow-hidden"
-                                  >
-                                    {item.links.map((link, i) => (
-                                      <motion.li 
-                                        key={i}
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: i * 0.05 }}
-                                        className="border-t border-gray-100"
-                                      >
-                                        <Link
-                                          to={link.path}
-                                          className="block px-2 py-3 text-gray-700 hover:text-blue-700 rounded transition-colors"
-                                          onClick={() => setMobileMenuOpen(false)}
-                                        >
-                                          {link.name}
-                                        </Link>
-                                      </motion.li>
-                                    ))}
-                                  </motion.ul>
-                                )}
-                              </AnimatePresence>
-                            </>
-                          ) : (
-                            <motion.div whileTap={{ scale: 0.98 }}>
-                              <Link
-                                to={item.path}
-                                className="block text-gray-800 hover:text-blue-700 font-medium py-4 px-2 transition-colors"
-                                onClick={() => setMobileMenuOpen(false)}
-                              >
-                                {item.title}
-                              </Link>
-                            </motion.div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <motion.div 
-                      className="mt-8"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      <Link
-                        to="/apply-now"
-                        className="block bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-800 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-medium text-center transition-all shadow-md hover:shadow-lg"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        Apply Now
-                      </Link>
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="mt-8 pt-6 border-t border-gray-200"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      <h4 className="text-sm font-semibold text-gray-500 mb-3">CONTACT INFO</h4>
-                      <div className="space-y-2">
-                        <div className="flex items-center">
-                          <FaPhone className="mr-3 text-blue-600" />
-                          <span className="text-sm">+1 234 567 890</span>
-                        </div>
-                        <div className="flex items-center">
-                          <FaEnvelope className="mr-3 text-blue-600" />
-                          <span className="text-sm">info@college.edu</span>
-                        </div>
-                        <div className="flex items-start">
-                          <FaMapMarkerAlt className="mr-3 mt-1 text-blue-600" />
-                          <span className="text-sm">123 College Ave, Education City</span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </>
-            )}
-          </AnimatePresence>
+</div>
+
+
         </div>
       </motion.header>
     </>

@@ -101,9 +101,6 @@ const PrivacyPolicy = () => {
           </div>
         </div>
 
-        <div className="mt-8 text-center text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} Saroj College of Pharmacy, Lucknow. All rights reserved.</p>
-        </div>
       </div>
     </div>
   </Layout>
