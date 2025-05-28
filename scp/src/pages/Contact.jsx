@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Send, MapPin, Phone, Mail } from "lucide-react"
 import Layout from "../components/Layout"
+import {toast , Toaster} from "react-hot-toast"
 
 export default function ContactUs() {
   const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL
@@ -13,7 +14,7 @@ export default function ContactUs() {
     message: "",
   })
 
-  const [status, setStatus] = useState("")
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -22,8 +23,7 @@ export default function ContactUs() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setStatus("Sending...")
-
+setSubmitting(true)
     try {
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
@@ -35,7 +35,7 @@ export default function ContactUs() {
       })
 
       // Google Apps Script returns no JSON in no-cors mode, so we assume success
-      setStatus("Thank you for contacting us! We'll respond soon.")
+      toast.success("Thank you for contacting us! We'll respond soon.")
       setFormData({
         name: "",
         email: "",
@@ -45,12 +45,15 @@ export default function ContactUs() {
       })
     } catch (error) {
       console.error("Error!", error.message)
-      setStatus("Something went wrong. Please try again later.")
+      toast.error("Something went wrong. Please try again later.")
+    }finally {
+      setSubmitting(false);
     }
   }
 
   return (
     <Layout>
+      <Toaster/>
       <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <header className="text-center mb-12">
@@ -80,7 +83,7 @@ export default function ContactUs() {
                   <Phone className="text-indigo-600 w-6 h-6" />
                   <div className="text-indigo-700">
                     <h3 className="font-semibold text-indigo-800">Phone</h3>
-                    <p className="text-sm">+91 09513731275</p>
+                    <p className="text-sm">+91 9555699988</p>
                   </div>
                 </div>
 
@@ -88,7 +91,7 @@ export default function ContactUs() {
                   <Mail className="text-indigo-600 w-6 h-6" />
                   <div className="text-indigo-700">
                     <h3 className="font-semibold text-indigo-800">Email</h3>
-                    <p className="text-sm">info@seglko.org</p>
+                    <p className="text-sm">admission.cell@seglko.org</p>
                   </div>
                 </div>
               </div>
@@ -192,17 +195,44 @@ export default function ContactUs() {
 
                 <button
                   type="submit"
-                  className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"
+                  disabled={submitting}
+                  className={`w-full py-3 rounded-lg font-semibold transition flex items-center justify-center space-x-2 ${
+                    submitting
+                      ? "bg-indigo-400 cursor-not-allowed"
+                      : "bg-indigo-600 hover:bg-indigo-700 text-white"
+                  }`}
                 >
-                  <div className="flex items-center justify-center space-x-2">
-                    <Send className="w-5 h-5" />
-                    <span>Send Message</span>
-                  </div>
+                  {submitting ? (
+                    <>
+                      <svg
+                        className="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                        />
+                      </svg>
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
-
-                {status && (
-                  <p className="text-center mt-4 text-indigo-700 font-medium">{status}</p>
-                )}
               </form>
             </div>
           </div>

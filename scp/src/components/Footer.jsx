@@ -47,11 +47,11 @@ const Footer = () => {
             </li>
             <li className="flex items-center">
               <FaPhone className="mr-3 text-blue-500" />
-              <a href="tel:+919513731275" className="hover:text-white">+91 95137-31275</a>
+              <a href="tel:9555699988" className='hover:text-white'>+91 9555699988</a>
             </li>
             <li className="flex items-center">
               <FaEnvelope className="mr-3 text-blue-500" />
-              <a href="mailto:info@seglko.org" className="hover:text-white">info@seglko.org</a>
+              <a href="mailto:admission.cell@seglko.org" className="hover:text-white">admission.cell@seglko.org</a>
             </li>
           </ul>
         </div>
