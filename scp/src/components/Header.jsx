@@ -96,7 +96,7 @@ const Header = () => {
               className="flex items-center"
             >
               <FaPhone className="mr-2 text-blue-300" />
-              <a href='tel:5222239810'>+91 5222239810</a>
+              <a href='tel:9513731275'>+91 9513731275</a>
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
@@ -241,7 +241,7 @@ const Header = () => {
                 className="ml-4"
               >
                 <Link
-                  to="/apply-now"
+                  to="https://seglko.in8.nopaperforms.com/"
                   className="bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-800 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all shadow-md hover:shadow-lg flex items-center"
                 >
                   <span>Apply Now</span>
