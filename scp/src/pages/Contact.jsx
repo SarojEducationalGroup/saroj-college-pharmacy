@@ -80,7 +80,7 @@ export default function ContactUs() {
                   <Phone className="text-indigo-600 w-6 h-6" />
                   <div className="text-indigo-700">
                     <h3 className="font-semibold text-indigo-800">Phone</h3>
-                    <p className="text-sm">+91 05222239810</p>
+                    <p className="text-sm">+91 09513731275</p>
                   </div>
                 </div>
 

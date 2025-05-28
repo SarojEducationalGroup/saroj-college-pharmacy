@@ -94,7 +94,7 @@ const PrivacyPolicy = () => {
               </p>
               <ul className="mt-2 space-y-1 text-blue-700">
                 <li>Email: <span className="font-medium">info@seglko.org</span></li>
-                <li>Phone: <span className="font-medium">+91-5222239810</span></li>
+                <li>Phone: <span className="font-medium">+91-9513731275</span></li>
                 <li>Address: <span className="font-medium">Saroj College of Pharmacy, Lucknow, Uttar Pradesh</span></li>
               </ul>
             </div>
