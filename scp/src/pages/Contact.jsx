@@ -1,10 +1,10 @@
-import React, { useState } from "react"
-import { Send, MapPin, Phone, Mail } from "lucide-react"
-import Layout from "../components/Layout"
-import {toast , Toaster} from "react-hot-toast"
+import React, { useState } from "react";
+import { Send, MapPin, Phone, Mail } from "lucide-react";
+import Layout from "../components/Layout";
+import { toast, Toaster } from "react-hot-toast";
 
 export default function ContactUs() {
-  const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL
+  const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -12,18 +12,19 @@ export default function ContactUs() {
     phone: "",
     subject: "",
     message: "",
-  })
+    college: "Saroj College of Pharmacy",
+  });
 
   const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-setSubmitting(true)
+    e.preventDefault();
+    setSubmitting(true);
     try {
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
@@ -32,34 +33,38 @@ setSubmitting(true)
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      })
+      });
 
       // Google Apps Script returns no JSON in no-cors mode, so we assume success
-      toast.success("Thank you for contacting us! We'll respond soon.")
+      toast.success("Thank you for contacting us! We'll respond soon.");
       setFormData({
         name: "",
         email: "",
         phone: "",
         subject: "",
         message: "",
-      })
+        college: "Saroj College of Pharmacy"
+      });
     } catch (error) {
-      console.error("Error!", error.message)
-      toast.error("Something went wrong. Please try again later.")
-    }finally {
+      console.error("Error!", error.message);
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
       setSubmitting(false);
     }
-  }
+  };
 
   return (
     <Layout>
-      <Toaster/>
+      <Toaster />
       <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <header className="text-center mb-12">
-            <h1 className="text-4xl font-extrabold text-indigo-900 mb-2">Contact Us</h1>
+            <h1 className="text-4xl font-extrabold text-indigo-900 mb-2">
+              Contact Us
+            </h1>
             <p className="text-indigo-700 max-w-xl mx-auto text-lg">
-              We are here to assist you. Please reach out with any questions or feedback.
+              We are here to assist you. Please reach out with any questions or
+              feedback.
             </p>
           </header>
 
@@ -67,14 +72,17 @@ setSubmitting(true)
             {/* Left Info */}
             <div className="lg:col-span-5 space-y-10">
               <div className="bg-white rounded-2xl shadow-lg p-8 space-y-8">
-                <h2 className="text-2xl font-semibold text-indigo-900">Contact Information</h2>
+                <h2 className="text-2xl font-semibold text-indigo-900">
+                  Contact Information
+                </h2>
 
                 <div className="flex items-start space-x-4">
                   <MapPin className="text-indigo-600 w-6 h-6 mt-1" />
                   <div>
                     <h3 className="font-semibold text-indigo-800">Address</h3>
                     <address className="not-italic text-indigo-700 leading-relaxed mt-1 text-sm">
-                      Ahimamau, Arjunganj, Sultanpur Road, Lucknow, Uttar Pradesh, India, 226001
+                      Ahimamau, Arjunganj, Sultanpur Road, Lucknow, Uttar
+                      Pradesh, India, 226001
                     </address>
                   </div>
                 </div>
@@ -111,12 +119,20 @@ setSubmitting(true)
 
             {/* Form */}
             <div className="lg:col-span-7 bg-white rounded-2xl shadow-lg p-10">
-              <h2 className="text-3xl font-semibold text-indigo-900 mb-6">Send us a Message</h2>
+              <h2 className="text-3xl font-semibold text-indigo-900 mb-6">
+                Send us a Message
+              </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6 max-w-3xl mx-auto"
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-indigo-700 mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-indigo-700 mb-2"
+                    >
                       Full Name
                     </label>
                     <input
@@ -131,7 +147,10 @@ setSubmitting(true)
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-indigo-700 mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-indigo-700 mb-2"
+                    >
                       Email Address
                     </label>
                     <input
@@ -148,7 +167,10 @@ setSubmitting(true)
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-indigo-700 mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-indigo-700 mb-2"
+                  >
                     Phone Number
                   </label>
                   <input
@@ -163,7 +185,10 @@ setSubmitting(true)
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-indigo-700 mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-indigo-700 mb-2"
+                  >
                     Subject
                   </label>
                   <input
@@ -178,7 +203,10 @@ setSubmitting(true)
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-indigo-700 mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-indigo-700 mb-2"
+                  >
                     Message
                   </label>
                   <textarea
@@ -239,5 +267,5 @@ setSubmitting(true)
         </div>
       </div>
     </Layout>
-  )
+  );
 }

@@ -43,6 +43,10 @@ const menuItems = [
     ],
   },
   {
+    title: "Placement",
+    path: "/placements",
+  },
+  {
     title: "Contact",
     path: "/contact",
   },
