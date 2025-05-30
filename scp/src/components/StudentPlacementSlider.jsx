@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import PlaceStudents from "../data/placementData.json";
 
 const placedStudents = [...PlaceStudents.placementData]
@@ -9,18 +8,37 @@ const placedStudents = [...PlaceStudents.placementData]
 
 export default function PlacedStudents() {
   const controls = useAnimation();
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: false,
-  });
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
 
   useEffect(() => {
-    if (inView) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isInView) {
       controls.start("visible");
     } else {
       controls.start("hidden");
     }
-  }, [controls, inView]);
+  }, [controls, isInView]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -54,20 +72,12 @@ export default function PlacedStudents() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          {/* <div className="inline-block relative mb-6">
-            <span className="absolute -inset-4 bg-blue-100 rounded-full opacity-70"></span>
-            <span className="relative z-10 text-blue-600 font-bold text-lg uppercase tracking-wider">
-              Career Triumphs
-            </span>
-          </div> */}
-          
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-              Record-Breaking
-            </span> Placements,{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-              Life-Changing
-            </span> Outcomes
-         
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+            Record-Breaking
+          </span> Placements,{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+            Life-Changing
+          </span> Outcomes
           
           <motion.p
             initial={{ opacity: 0 }}
@@ -86,7 +96,7 @@ export default function PlacedStudents() {
           ></motion.div>
         </motion.div>
 
-        {/* Student Cards - Remains the same as before */}
+        {/* Student Cards */}
         <motion.div
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-4"
           variants={containerVariants}
@@ -99,7 +109,7 @@ export default function PlacedStudents() {
               variants={itemVariants}
               whileHover={{ y: -10, scale: 1.03 }}
               className="bg-white rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between h-full border border-gray-100 overflow-hidden relative group"
-             >
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
               
               <div className="relative z-10">
