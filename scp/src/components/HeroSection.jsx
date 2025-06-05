@@ -123,7 +123,9 @@ export default function PharmacyHero() {
                 size="lg"
                 className="border-2 hover:cursor-pointer border-gray-300 hover:border-blue-500 px-8 py-3 rounded-full transition-all duration-300 hover:bg-blue-50"
               >
+              <a href="/courses" className="p-10" >
                 Explore Programs
+                </a>
               </Button>
             </div>
 

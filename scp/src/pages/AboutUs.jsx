@@ -63,7 +63,7 @@ export default function AboutUs() {
             Join Saroj College of Pharmacy and be a part of shaping the future of healthcare through excellence in education and research.
           </p>
           <a
-            href="mailto:info@sarojpharmacy.edu.in"
+            href="/contact"
             className="inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-blue-700 transition"
           >
             Contact Us
